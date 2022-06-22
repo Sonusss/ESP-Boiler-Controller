@@ -3,7 +3,7 @@ sensor:
   state_topic: 'oil_burner/state'
   name: 'Boiler Outlet Temp'
   unit_of_measurement: '°C'
-  value_template: "{{ value_json.sensors.heating_temp }}"
+  value_template: "{{ value_json.status.heating_temp }}"
   availability_topic: "oil_burner/lwt"
   payload_available: "Online"
   payload_not_available: "Offline"
@@ -13,7 +13,7 @@ sensor:
   name: 'Boiler Return Temp'y
   
   unit_of_measurement: '°C'
-  value_template: "{{ value_json.sensors.return_temp }}"
+  value_template: "{{ value_json.status.return_temp }}"
   availability_topic: "oil_burner/lwt"
   payload_available: "Online"
   payload_not_available: "Offline"
@@ -22,7 +22,7 @@ sensor:
   state_topic: 'oil_burner/state'
   name: 'Boiler Hot-Water Temp'
   unit_of_measurement: '°C'
-  value_template: "{{ value_json.sensors.boiler_temp }}"
+  value_template: "{{ value_json.status.boiler_temp }}"
   availability_topic: "oil_burner/lwt"
   payload_available: "Online"
   payload_not_available: "Offline"
