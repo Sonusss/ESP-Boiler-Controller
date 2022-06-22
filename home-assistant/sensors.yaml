@@ -1,0 +1,51 @@
+sensor:
+- platform: mqtt
+  state_topic: 'oil_burner/state'
+  name: 'Boiler Outlet Temp'
+  unit_of_measurement: '°C'
+  value_template: "{{ value_json.sensors.T_probe0 }}"
+  availability_topic: "oil_burner/lwt"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+ 
+- platform: mqtt
+  state_topic: 'oil_burner/state'
+  name: 'Boiler Return Temp'
+  unit_of_measurement: '°C'
+  value_template: "{{ value_json.sensors.T_probe2 }}"
+  availability_topic: "oil_burner/lwt"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+
+- platform: mqtt
+  state_topic: 'oil_burner/state'
+  name: 'Boiler Hot-Water Temp'
+  unit_of_measurement: '°C'
+  value_template: "{{ value_json.sensors.T_probe1 }}"
+  availability_topic: "oil_burner/lwt"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+
+- platform: mqtt
+  state_topic: 'oil_burner/state'
+  name: 'Oil Burner Uptime'
+  value_template: "{{ value_json.status.Uptime }}"
+  availability_topic: "oil_burner/lwt"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  expire_after: 180
+
+binary_sensor:  
+- platform: mqtt
+  unique_id: oil_burner_flame
+  name: "Burner Flame"
+  state_topic: 'oil_burner/state'
+  availability_topic: "oil_burner/lwt"
+  payload_available: "Online"
+  payload_not_available: "Offline"
+  expire_after: 180
+  value_template: '{{value_json.status.flame}}'
+  payload_on: "1"
+  payload_off: "0"
+
+
