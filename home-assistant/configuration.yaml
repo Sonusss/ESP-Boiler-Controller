@@ -1,0 +1,120 @@
+switch:
+  - platform: mqtt
+    unique_id: oil_heater_switch
+    name: "Central Heating"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"heating":1}'
+    payload_off: '{"heating":0}'
+    value_template: "{{ value_json.status.heating }}"
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    unique_id: boiler_heater_switch
+    name: "Boiler Switch"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"boiler":1}'
+    payload_off: '{"boiler":0}'
+    value_template: "{{ value_json.status.boiler }}"
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    unique_id: oil_burner_switch
+    name: "Oil Burner"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"burner":1}'
+    payload_off: '{"burner":0}'
+    value_template: "{{value_json.status.burner}}" 
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
+
+
+  - platform: mqtt
+    unique_id: heating_pump_switch
+    name: "Heating Pump"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"h_pump":1}'
+    payload_off: '{"h_pump":0}'
+    value_template: "{{value_json.status.h_pump}}" 
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    unique_id: boiler_pump_switch
+    name: "Boiler Pump"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"b_pump":1}'
+    payload_off: '{"b_pump":0}'
+    value_template: "{{value_json.status.b_pump}}" 
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    unique_id: boiler_relay1
+    name: "Boiler Water Loop"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"relay1":1}'
+    payload_off: '{"relay1":0}'
+    value_template: "{{value_json.status.relay1}}"
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
+
+  - platform: mqtt
+    unique_id: boiler_priority
+    name: "Boiler Water Priority"
+    state_topic: "oil_burner/state"
+    command_topic: "oil_burner/cmd"
+    availability_topic: "oil_burner/lwt"
+    payload_on: '{"boiler_priority":1}'
+    payload_off: '{"boiler_priority":0}'
+    value_template: "{{value_json.settings.boiler_priority}}"
+    state_on: "1"
+    state_off: "0"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    optimistic: false
+    qos: 0
+    retain: false
