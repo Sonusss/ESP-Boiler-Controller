@@ -44,10 +44,10 @@ Available commands:
 oil_burner/cmd   {"save":1}       Save settings to flash
 oil_burner/cmd   {"wipe":1}       Erase settings in flash usefull after upgrade
 oil_burner/cmd   {"init":1}       Restore default settings - does not save to flash 
-oil_burner/cmd   {"reboot":1}  
+oil_burner/cmd   {"reboot":1}     obvious ;-)
 oil_burner/cmd   {"settings":1}   call MQTT settings message
-oil_burner/cmd   {"probe":1}   call MQTT sensors message
-oil_burner/cmd   {"relay1":1}   control the auxiliary relay (relay1)
+oil_burner/cmd   {"probe":1}      call MQTT sensors message
+oil_burner/cmd   {"relay1":1}     control the auxiliary relay (relay1)
 
 
   
