@@ -602,12 +602,16 @@ void relay(int relay, char state[3]) {
 }
 
 void get_temp(){
-//  sensors.requestTemperatures(); // Send the command to get temperature readings 
-//  delay(1000);
+  sensors.requestTemperatures(); // Send the command to get temperature readings 
+  delay(100);
   heating_temp = float(sensors.getTempCByIndex(outlet_probe_idx));
+  delay(100);
   return_temp = float(sensors.getTempCByIndex(return_probe_idx));
+  delay(100);
   boiler_temp = float(sensors.getTempCByIndex(boiler_probe_idx));
+  delay(100);  
   inside_temp = float(sensors.getTempCByIndex(inside_probe_idx));
+  delay(100);  
   outside_temp = float(sensors.getTempCByIndex(outside_probe_idx));
 }
 
