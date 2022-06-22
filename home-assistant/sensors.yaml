@@ -3,16 +3,17 @@ sensor:
   state_topic: 'oil_burner/state'
   name: 'Boiler Outlet Temp'
   unit_of_measurement: '°C'
-  value_template: "{{ value_json.sensors.T_probe0 }}"
+  value_template: "{{ value_json.sensors.heating_temp }}"
   availability_topic: "oil_burner/lwt"
   payload_available: "Online"
   payload_not_available: "Offline"
  
 - platform: mqtt
   state_topic: 'oil_burner/state'
-  name: 'Boiler Return Temp'
+  name: 'Boiler Return Temp'y
+  
   unit_of_measurement: '°C'
-  value_template: "{{ value_json.sensors.T_probe2 }}"
+  value_template: "{{ value_json.sensors.return_temp }}"
   availability_topic: "oil_burner/lwt"
   payload_available: "Online"
   payload_not_available: "Offline"
@@ -21,7 +22,7 @@ sensor:
   state_topic: 'oil_burner/state'
   name: 'Boiler Hot-Water Temp'
   unit_of_measurement: '°C'
-  value_template: "{{ value_json.sensors.T_probe1 }}"
+  value_template: "{{ value_json.sensors.boiler_temp }}"
   availability_topic: "oil_burner/lwt"
   payload_available: "Online"
   payload_not_available: "Offline"
@@ -47,5 +48,4 @@ binary_sensor:
   value_template: '{{value_json.status.flame}}'
   payload_on: "1"
   payload_off: "0"
-
 
