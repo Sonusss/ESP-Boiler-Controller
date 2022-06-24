@@ -48,6 +48,9 @@ oil_burner/cmd   {"reboot":1}     obvious ;-)
 oil_burner/cmd   {"settings":1}   call MQTT settings message
 oil_burner/cmd   {"probe":1}      call MQTT sensors message
 oil_burner/cmd   {"relay1":1}     control the auxiliary relay (relay1)
+oil_burner/cmd   {"boiler_active":(1/0)}     Force boiler state (added V1.02)
+                 When hot water is between <boiler_preset_temp> and <boiler_low_limit> boiler is normally inactive
+                 But sometimes it might be interresting to force hot water generation manually to reach the target <boiler_preset_temp>
 
 
   
