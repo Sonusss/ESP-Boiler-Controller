@@ -50,7 +50,6 @@ boolean MQTT_WILL_RETAIN = false;
 // OTA
 const char* OTA_PWD = "OTApassword";
 
-
 const char* Sensor_obj = "sensors";
 const char* Status_obj = "status";
 const char* Event_obj = "event";
@@ -70,6 +69,21 @@ float return_temp = 0;
 float boiler_temp = 0;
 float inside_temp = 0;
 float outside_temp = 0;
+
+float t_heating_temp = 0;
+float t_return_temp = 0;
+float t_boiler_temp = 0;
+float t_inside_temp = 0;
+float t_outside_temp = 0;
+float t_probe = 0;
+float t_probe0 = 0;
+float t_probe1 = 0;
+float t_probe2 = 0;
+float t_probe3 = 0;
+float t_probe4 = 0;
+int p_counter = 0;
+int deviceCount = 0; // variable to store the number of devices connected
+DeviceAddress deviceAddress; // variable to store the device address
 
 // PARAMETERS
 
@@ -457,7 +471,7 @@ void publish_MQTT_sensors() {
   String temp2=String(sensors.getTempCByIndex(2),1);
   String temp3=String(sensors.getTempCByIndex(3),1);
   String temp4=String(sensors.getTempCByIndex(4),1);
-  StaticJsonDocument<100> doc3;
+  StaticJsonDocument<200> doc3;
   JsonObject sensor0 = doc3.createNestedObject(Sensor_obj);
   sensor0["T_probe0"] = temp0;
   sensor0["T_probe1"] = temp1;
@@ -465,7 +479,7 @@ void publish_MQTT_sensors() {
   sensor0["T_probe3"] = temp3;
   sensor0["T_probe4"] = temp4;
   
-  char mqtt_mesg[100];
+  char mqtt_mesg[200];
   serializeJson(doc3, mqtt_mesg);
     if (debug){
       Serial.print("MQTT Publish -> ["); 
@@ -604,15 +618,18 @@ void relay(int relay, char state[3]) {
 void get_temp(){
   sensors.requestTemperatures(); // Send the command to get temperature readings 
   delay(100);
-  heating_temp = float(sensors.getTempCByIndex(outlet_probe_idx));
+  t_heating_temp = float(sensors.getTempCByIndex(outlet_probe_idx));
+  if (t_heating_temp != -127){heating_temp = t_heating_temp;}
   delay(100);
-  return_temp = float(sensors.getTempCByIndex(return_probe_idx));
+  t_return_temp = float(sensors.getTempCByIndex(return_probe_idx));
+  if (t_return_temp != -127){return_temp = t_return_temp;}  
   delay(100);
-  boiler_temp = float(sensors.getTempCByIndex(boiler_probe_idx));
+  t_boiler_temp = float(sensors.getTempCByIndex(boiler_probe_idx));
+  if (t_boiler_temp != -127){boiler_temp = t_boiler_temp;}    
   delay(100);  
-  inside_temp = float(sensors.getTempCByIndex(inside_probe_idx));
+  t_inside_temp = float(sensors.getTempCByIndex(inside_probe_idx));
   delay(100);  
-  outside_temp = float(sensors.getTempCByIndex(outside_probe_idx));
+  t_outside_temp = float(sensors.getTempCByIndex(outside_probe_idx));
 }
 
 void init_setup(){
@@ -959,8 +976,9 @@ delay(1);
 
   if(Dinput1.isPressed()) {
         //publish_MQTT_event("flame", "1");
-        publish_MQTT_stat();
         flame = true;
+        publish_MQTT_stat();
+
   }
   if(Dinput1.isReleased()) {
         //publish_MQTT_event("flame", "0");
