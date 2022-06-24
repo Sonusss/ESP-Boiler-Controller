@@ -29,14 +29,14 @@ const bool debug = false;
 
 
 // WIFI
-const char* WIFI_SSID = "Pollicito";
-const char* WIFI_PWD = "lanoitaN_26*06*16";
+const char* WIFI_SSID = "YourWIFI";
+const char* WIFI_PWD = "yourpassword";
 
 // MQTT
 const char* MQTT_SERVER = "10.10.0.1";
 const int16_t MQTT_PORT = 1883;
-const char* MQTT_USER = "orp";
-const char* MQTT_PASSWD = "66hagnoul66";
+const char* MQTT_USER = "MQTTuser";
+const char* MQTT_PASSWD = "MQTTpassword";
 #define MQTT_MAX_TRANSFER_SIZE 1024
 
 
@@ -48,7 +48,7 @@ const char* MQTT_WILL_MESSAGE = "Offline";
 boolean MQTT_WILL_RETAIN = false;
 
 // OTA
-const char* OTA_PWD = "TroisCerisier2606";
+const char* OTA_PWD = "OTApassword";
 
 
 const char* Sensor_obj = "sensors";
