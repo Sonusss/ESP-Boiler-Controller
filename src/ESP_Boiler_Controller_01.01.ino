@@ -1065,7 +1065,7 @@ delay(1);
     //sensors.requestTemperatures(); // Send the command to get temperature readings 
     if((millis() - lastime2) >= 6000) {  // 6 seconds loop)
          lastime2 = millis();
-//       get_temp();
+         get_temp();
          publish_MQTT_event("get_sensors", String(lp_counter));
          lp_counter++;
     }
